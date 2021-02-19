@@ -15,17 +15,20 @@ public class LearnHashMap {
         employeeRollNumbers.put("Sagar",10);
         employeeRollNumbers.put("Ajinkya",1);
     }
-    public void printHashMap()
-    {
-        System.out.println("Printing HashMap directly with Key Value: "+employeeRollNumbers);
+    public void printHashMap() {
+        System.out.println("Printing HashMap directly with Key Value: " + employeeRollNumbers);
 
         System.out.println("*************");
+    }
+    public void printHashMapUsingMapEntry() {
         System.out.println("Printing hashmap using Map.Entry");
-        for(Map.Entry<String,Integer> entry: employeeRollNumbers.entrySet())
-        {
-            System.out.print("Key is: "+entry.getKey());
-            System.out.println("And value is: "+entry.getValue());
+        for (Map.Entry<String, Integer> entry : employeeRollNumbers.entrySet()) {
+            System.out.print("Key is: " + entry.getKey());
+            System.out.println("And value is: " + entry.getValue());
         }
+    }
+    public void printHashMapUsingIterator()
+    {
         System.out.println("Getting key of hashmap and Printing using Iterator");
 
         Set<String> employee= employeeRollNumbers.keySet();
@@ -52,5 +55,7 @@ public class LearnHashMap {
         LearnHashMap learnHashMap = new LearnHashMap();
         learnHashMap.createHashMap();
         learnHashMap.printHashMap();
+        learnHashMap.printHashMapUsingMapEntry();
+        learnHashMap.printHashMapUsingIterator();
     }
 }
