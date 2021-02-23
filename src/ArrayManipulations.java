@@ -5,7 +5,7 @@ public class ArrayManipulations {
         int [] expectedArrayToSort = new int[] {6,4,1,9,0};
         int [] actualSortedArray=sortArray(expectedArrayToSort,"increasing");
         printArray(actualSortedArray);
-         actualSortedArray=sortArray(expectedArrayToSort,"decreasing");
+        actualSortedArray=sortArray(expectedArrayToSort,"decreasing");
         printArray(actualSortedArray);
         actualSortedArray=sortArray(expectedArrayToSort,"h");
 
@@ -46,4 +46,5 @@ public class ArrayManipulations {
         }
         System.out.println();
     }
+
 }
