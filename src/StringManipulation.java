@@ -7,10 +7,10 @@ public class StringManipulation {
         inputStr = "75hgf76dgh87"; //input
         //output = 7+5+7+6+8+7 = 40
         getNumbersFromStringAndAdd(inputStr);
+        getConsecutiveNumberFromStringAndAdd(inputStr);
     }
 
-    public static void reverseFirstTwoCharAndSoOnInAString(String myInputString)
-    {
+    public static void reverseFirstTwoCharAndSoOnInAString(String myInputString) {
         String outStr="";
         for (int i=0;i<myInputString.length();i+=2)
         {
@@ -18,7 +18,6 @@ public class StringManipulation {
         }
         System.out.println("Output string is: "+outStr);
     }
-
     public static void getNumbersFromStringAndAdd(String myInputString){
         char [] ch = myInputString.toCharArray();
         int sum =0;
@@ -31,5 +30,34 @@ public class StringManipulation {
             }
         }
         System.out.println("Sum of numbers extracted is: "+sum);
+    }
+    public static void getConsecutiveNumberFromStringAndAdd(String inputString){
+        char c [] = inputString.toCharArray();
+        String myString ="";
+        int sum=0;
+        boolean isDigit= false;
+        for(int i=0;i<inputString.length();i++)
+        {
+            if(Character.isDigit(c[i]))
+            {
+                myString = myString + c[i];
+                isDigit=true;
+            }
+            else {
+                if(isDigit)
+                {
+                    sum = sum + Integer.parseInt(myString);
+                    myString="";
+                    isDigit = false;
+                }
+            }
+        }
+        //condition to check for digits which are occuring at the end of the string,
+        // in that case it will not got to else block of the code eg. string 124 , gh45gf5
+        if(isDigit)
+        {
+            sum = sum + Integer.parseInt(myString);
+        }
+        System.out.println("Sum is: "+ sum);
     }
 }
