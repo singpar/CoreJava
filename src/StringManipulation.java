@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class StringManipulation {
     public static void main(String [] arg)
     {
@@ -8,6 +10,8 @@ public class StringManipulation {
         //output = 7+5+7+6+8+7 = 40
         getNumbersFromStringAndAdd(inputStr);
         getConsecutiveNumberFromStringAndAdd(inputStr);
+        HashMap<Character,Integer> mapWithOccurrenceOfEachChar=getOccurrenceOfEachCharInAString("pardeeeep siiingh");
+        printCharWithHighestOccurrenceInMap(mapWithOccurrenceOfEachChar);
     }
 
     public static void reverseFirstTwoCharAndSoOnInAString(String myInputString) {
@@ -32,6 +36,7 @@ public class StringManipulation {
         System.out.println("Sum of numbers extracted is: "+sum);
     }
     public static void getConsecutiveNumberFromStringAndAdd(String inputString){
+        // atul34fg2
         char c [] = inputString.toCharArray();
         String myString ="";
         int sum=0;
@@ -59,5 +64,38 @@ public class StringManipulation {
             sum = sum + Integer.parseInt(myString);
         }
         System.out.println("Sum is: "+ sum);
+    }
+    public static HashMap<Character,Integer>  getOccurrenceOfEachCharInAString(String inputString) {
+        HashMap<Character,Integer> myHashMap = new HashMap<Character,Integer>();
+        for(int i=0;i<inputString.length();i++)
+        {
+            char [] chars = inputString.toCharArray();
+            if(!myHashMap.containsKey(chars[i]))
+            {
+                myHashMap.put(chars[i],1);
+                for(int j=i+1;j<inputString.length();j++)
+                    if(chars[i]==chars[j])
+                {
+                    myHashMap.put(chars[i],myHashMap.get(chars[i])+1);
+                }
+            }
+        }
+        System.out.println("myHashMap is: "+myHashMap);
+        TreeMap<Character,Integer> treeMap = new TreeMap<>(myHashMap);
+        System.out.println("Sorted Map is: "+treeMap);
+        return myHashMap;
+    }
+    public static void printCharWithHighestOccurrenceInMap(HashMap<Character,Integer> occurrenceMap) {
+        int maxValue=0;
+        Character key=' ';
+        for(Map.Entry<Character,Integer> entry: occurrenceMap.entrySet())
+        {
+            if(maxValue<entry.getValue())
+            {
+                maxValue = entry.getValue();
+                 key = entry.getKey();
+            }
+        }
+        System.out.println("Key and value with max value are: Key is " +key +" and value is: "+ maxValue);
     }
 }
